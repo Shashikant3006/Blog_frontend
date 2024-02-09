@@ -12,7 +12,7 @@ const CreatePost=()=>{
    
     const handleSubmit= async()=>{
        
-       const res = await fetch("http://localhost:7000/api/blog/create",{
+       const res = await fetch("https://shashikant-blog-api2.onrender.com/api/blog/create",{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
