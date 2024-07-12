@@ -19,11 +19,11 @@ export default function PostCard(props) {
   return (
     <Card sx={{width: "100%",  borderRadius:"10px"}} id={_id} elevation={15}>
       <CardHeader
-{/*         avatar={ */}
-{/*           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"> */}
+        avatar={ 
+          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
             {user.name}
-{/*           </Avatar> */}
-{/*         } */}
+          </Avatar>
+         }
         action={
           auth._id=== user._id && <Actions id={_id}/>
         }
