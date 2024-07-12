@@ -3,8 +3,6 @@ import { Card, CardContent, Typography, TextField, Button, InputAdornment, IconB
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../App';
-// import axios from 'axios'
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,12 +10,11 @@ const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   const { setRefresh } = useContext(AuthContext);
 
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
@@ -35,7 +32,7 @@ const Login = () => {
       if (res.ok) {
         localStorage.setItem("token", data.token);
         setRefresh(true);
-        navigator("/");
+        navigate("/");
       } else {
         if (data.error === "invalid_credentials") {
           toast.error("Invalid email or password. Please check your credentials.");
@@ -50,7 +47,7 @@ const Login = () => {
   };
 
   const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prev) => !prev);
   };
 
   const handleMouseDownPassword = (event) => {
@@ -65,7 +62,7 @@ const Login = () => {
         </Typography>
       </CardContent>
       <TextField
-        id="outlined-basic"
+        id="outlined-email"
         label="E-mail"
         variant="outlined"
         type="email"
@@ -74,7 +71,7 @@ const Login = () => {
         value={user.email}
       />
       <TextField
-        id="outlined-basic"
+        id="outlined-password"
         label="Password"
         variant="outlined"
         type={showPassword ? "text" : "password"}
