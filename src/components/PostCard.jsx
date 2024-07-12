@@ -21,7 +21,7 @@ export default function PostCard(props) {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {user.name.slice(0,1)}
+            {user.name}
           </Avatar>
         }
         action={
