@@ -26,16 +26,20 @@ export default function PostCard(props) {
           auth._id === user._id && <Actions id={_id} />
         }
         title={
+          <Typography variant="h6" color="text.primary">
+            {user.name}
+          </Typography>
+        }
+        subheader={
           <div>
             <Typography variant="body1" color="text.primary">
-              {user.name}
-            </Typography>
-            <Typography variant="h6" color="text.primary">
               {title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {moment(createdOn).fromNow()}
             </Typography>
           </div>
         }
-        subheader={moment(createdOn).fromNow()}
       />
       <CardMedia
         component="img"
