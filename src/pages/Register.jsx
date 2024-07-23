@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Register=()=>{
 
  const [user, setUser] = useState({name:"",email:"",password:""})
+  const[loading,setLoading]=useState(false);
 
  const navigator = useNavigate()
  
@@ -18,6 +19,7 @@ const Register=()=>{
 
 
  const handleSubmit=async()=>{
+  setLoading(true);
     console.log(user);
     const res = await fetch("https://shashikant-blog-api2.onrender.com/api/user/register",{
         method:"POST",
@@ -31,9 +33,11 @@ const Register=()=>{
         alert("Successfully Registered, Now Login to write your story")
         navigator("/login")
     }
+     setLoading(false);
     else{
         console.log(data);
     }
+  setLoading(false);
  }
 
 
